@@ -18,7 +18,7 @@ The infrastructure is segmented into distinct logical areas to optimize routing 
 * **Edge Connectivity:**
 * **ISP Simulation (LAN 10):** A dedicated area mimicking external internet connectivity.
 * **Redundancy:** Configured with a Primary Default Route and a **Floating Default Route** for failover reliability.
-* **NAT/PAT:** Implemented on Router 3 to mask internal IP addresses for secure internet egress.
+* **NAT:** Implemented on Router 3 to mask internal IP addresses for secure internet egress.
 
 
 
@@ -32,7 +32,7 @@ The infrastructure is segmented into distinct logical areas to optimize routing 
 
 * **Access Control Lists (ACL):** Traffic filtering example implemented on PC 5 (LAN 2).
 * **Port Security:** MAC-based security example configured in LAN 2 (PC 4).
-* **Encrypted Management:** All switches in LAN 2 are configured with **SSH v2** (Telnet disabled) for secure remote administration.
+* **Encrypted Management:** All switches in LAN 2 are configured with **SSH v2**.
 * **Authentication:** Password protection examples implemented across all Area 1 routers.
 
 ### Technical Stack
@@ -41,10 +41,3 @@ The infrastructure is segmented into distinct logical areas to optimize routing 
 * **Tools:** Cisco Packet Tracer / Cisco IOS.
 * **Concepts:** VLSM Subnetting, Inter-VLAN Routing, WAN Encapsulation.
 
-
-### Pro-Tip for your GitHub:
-
-Now that you have the text, make sure to upload your **.pkt** file to the same repository. If you have a screenshot of the network topology, I recommend adding it to the top of the README using this syntax:
-`![Network Topology](your_image_name.png)`
-
-**Would you like me to help you write a "Troubleshooting" section that explains how you verified the OSPF convergence or the NAT translations?**
