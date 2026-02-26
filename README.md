@@ -1,40 +1,50 @@
 # KERNELiOS Networking Final Project
-Overview
-This project involved designing and implementing a fully functional network infrastructure from scratch to simulate a Small-to-Medium Business (SMB) environment. The goal was to ensure high availability, security, and efficient routing across multiple departments within a strictly timed window.
 
-Technical Implementation
-Routing & Switching:
+### Overview
 
-OSPF: Implemented as the primary dynamic routing protocol for fast convergence and scalability.
+This project is a comprehensive Cisco simulation of a multi-area enterprise network designed for a small-to-medium business (SMB). It features a robust OSPF architecture, centralized server management, and multi-layered security protocols to ensure a scalable and secure corporate environment.
 
-Inter-VLAN Routing: Utilized to allow communication between different business departments (e.g., HR, IT, Finance) while maintaining logical separation.
+### Network Architecture
 
-Static & Default Routes: Configured for efficient edge traffic management and ISP simulation.
+The infrastructure is segmented into distinct logical areas to optimize routing performance and organizational structure:
 
-Security & Management:
+* **Multi-Area OSPF:**
+* **Area 0 (Core/WAN):** Interconnects all routers using high-speed WAN links.
+* **LANs 1-3:** Departmental segments, each utilizing its own switch with **PVST (Per-VLAN Spanning Tree)** for loop prevention across 3 distinct VLANs per LAN.
+* **LAN 4:** Dedicated Wireless (Wi-Fi) segment for mobile connectivity.
+* **LAN 5:** Centralized Server Farm hosting critical business services.
 
-Access Control Lists (ACLs): Deployed Standard and Extended ACLs to filter traffic and enforce security policies between VLANs.
 
-Port Security: Configured on access switches to mitigate MAC address flooding and unauthorized device connections.
+* **Edge Connectivity:**
+* **ISP Simulation (LAN 10):** A dedicated area mimicking external internet connectivity.
+* **Redundancy:** Configured with a Primary Default Route and a **Floating Default Route** for failover reliability.
+* **NAT/PAT:** Implemented on Router 3 to mask internal IP addresses for secure internet egress.
 
-Secure Management: Disabled Telnet in favor of SSH v2 for encrypted remote administration of all network devices.
 
-Services:
 
-DHCP: Configured for automated IP address assignment across the infrastructure.
+### Implemented Services (LAN 5)
 
-VLAN Design: Segmented the network to improve performance and security.
+* **DHCP:** Dynamic addressing for the majority of the network.
+* **DNS:** Internal name resolution, including a hosted web server and specific PC endpoints.
+* **NTP & Syslog:** Centralized time synchronization and logging for all networking equipment in LAN 2, ensuring audit-ready management.
 
-Tools Used
-Cisco Packet Tracer / GNS3
+### Security & Access Control
 
-Cisco IOS
+* **Access Control Lists (ACL):** Traffic filtering example implemented on PC 5 (LAN 2).
+* **Port Security:** MAC-based security example configured in LAN 2 (PC 4).
+* **Encrypted Management:** All switches in LAN 2 are configured with **SSH v2** (Telnet disabled) for secure remote administration.
+* **Authentication:** Password protection examples implemented across all Area 1 routers.
 
-Subnetting (VLSM)
+### Technical Stack
 
-How to Use
-Download the provided .pkt file.
+* **Protocols:** OSPF, PVST, NAT/PAT, SSH, DHCP, DNS, NTP, Syslog.
+* **Tools:** Cisco Packet Tracer / Cisco IOS.
+* **Concepts:** VLSM Subnetting, Inter-VLAN Routing, WAN Encapsulation.
 
-Open the file using Cisco Packet Tracer.
 
-Test connectivity by pinging between different VLANs or checking the OSPF routing table using show ip route.
+### Pro-Tip for your GitHub:
+
+Now that you have the text, make sure to upload your **.pkt** file to the same repository. If you have a screenshot of the network topology, I recommend adding it to the top of the README using this syntax:
+`![Network Topology](your_image_name.png)`
+
+**Would you like me to help you write a "Troubleshooting" section that explains how you verified the OSPF convergence or the NAT translations?**
